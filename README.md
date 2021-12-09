@@ -1,10 +1,16 @@
 # Bingo 90 tickets generator
 This is an application that will generate tickets to play bingo 90(housie bingo, tombola).
 
+#Hot to run
+./gradlew resolveAndLockAll --write-locks to create gradle.lockfile
+
+./gradlew clean build to compile
+
+./gradlew run to run it!
+
 # Requirements
 
-Generate a strip of 6 tickets
-Tickets are created as strips of 6, because this allows every number from 1 to 90 to appear across all 6 tickets. If they buy a full strip of six it means that players are guaranteed to mark off a number every time a number is called.
+Generate a strip of 6 tickets are created as strips of 6, because this allows every number from 1 to 90 to appear across all 6 tickets. If they buy a full strip of six it means that players are guaranteed to mark off a number every time a number is called.
 A bingo ticket consists of 9 columns and 3 rows.
 Each ticket row contains five numbers and four blank spaces
 Each ticket column consists of one, two or three numbers and never three blanks.
@@ -34,5 +40,6 @@ For Row and Column internal implementation is using an array, trying to improve 
 Jprofiler could only highlight issue related with logback which in the end is not making execution time that bad.
 
 # Thing to try to lower execution time
-Maybe uses of stream could be replace with for loops and operation on arrays, however that will make the code very hard to maintain 
+Maybe uses of stream could be replaced with for loops and operation on arrays, however that will make the code very hard to maintain 
 and for me this was a good exercise for practicing functional programming .
+
