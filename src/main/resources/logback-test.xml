@@ -1,0 +1,19 @@
+<configuration>
+  <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
+  <appender name="FILE-APPENDER" class="ch.qos.logback.core.FileAppender">
+    <file>logs/application-${bySecond}.log</file>
+    <encoder>
+      <pattern>%msg%n</pattern>
+    </encoder>
+  </appender>
+
+  <appender name="ASYNC-FILE-APPENDER" class="ch.qos.logback.classic.AsyncAppender">
+    <appender-ref ref="FILE-APPENDER"/>
+    <queueSize>262144</queueSize>
+    <discardingThreshold>0</discardingThreshold>
+  </appender>
+
+  <root level="info" additivity="false">
+    <appender-ref ref="FILE-APPENDER" />
+  </root>
+</configuration>

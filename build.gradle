@@ -1,0 +1,48 @@
+plugins {
+    id 'application'
+}
+
+group 'it.tommaso.playground'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.slf4j:slf4j-api:${slf4jVersion}"
+    implementation "ch.qos.logback:logback-classic:${logbackVersion}"
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+}
+
+dependencyLocking {
+    lockAllConfigurations()
+}
+
+task resolveAndLockAll {
+    description = "Resolves and locks all resolvable configurations that have locking enabled. To be used along --write-locks flag to lock all dependencies"
+    doFirst {
+        assert gradle.startParameter.writeDependencyLocks
+    }
+    doLast {
+        project.configurations
+                .findAll { it.canBeResolved }
+                .each { it.resolve() }
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
+
+application {
+    mainClassName = 'it.tommaso.playground.PlaygroundMain'
+}
+
+wrapper {
+    distributionType = Wrapper.DistributionType.ALL
+    gradleVersion = "7.3.1"
+}
