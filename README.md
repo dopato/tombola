@@ -17,7 +17,7 @@ Please make sure you add unit tests to verify the above conditions and an output
 
 Try to also think about the performance aspects of your solution. How long does it take to generate 10k strips? The recommended time is less than 1s (with a lightweight random implementation)
 
-#Consideration
+# Consideration
 The execution time unfortunately is bigger than 1 sec, however less than 4 secs.
 
 I am using a ThreadLocalRandom which should perform better while multithreading.
@@ -33,6 +33,6 @@ For Row and Column internal implementation is using an array, trying to improve 
 
 Jprofiler could only highlight issue related with logback which in the end is not making execution time that bad.
 
-#Thing to try to lower execution time
+# Thing to try to lower execution time
 Maybe uses of stream could be replace with for loops and operation on arrays, however that will make the code very hard to maintain 
 and for me this was a good exercise for practicing functional programming .
